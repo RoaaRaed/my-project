@@ -1,0 +1,32 @@
+﻿@model IEnumerable<my_resturant.Models.Menulist>
+
+<h2>Menu List</h2>
+<br />
+
+<table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+    <thead style="background-color: #f2f2f2;">
+        <tr>
+            <th style="padding: 10px; border-bottom: 2px solid #ddd;">Name</th>
+            <th style="padding: 10px; border-bottom: 2px solid #ddd;">Price</th>
+            <th style="padding: 10px; border-bottom: 2px solid #ddd;">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr style="background-color: @((Model.ToList().IndexOf(item) % 2 == 0) ? "#f9f9f9" : "#ffffff");">
+                <td style="padding: 10px; border-bottom: 1px solid #ddd;">@item.Name</td>
+                <td style="padding: 10px; border-bottom: 1px solid #ddd;">@item.Price</td>
+                <td style="padding: 10px; border-bottom: 1px solid #ddd;">  
+                    <div style="display: flex; gap: 10px;">
+                        <a asp-action="Edit" asp-route-id="@item.Id" style="padding: 5px 10px; text-decoration: none; color: white; background-color: #007bff; border-radius: 4px;">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" style="padding: 5px 10px; text-decoration: none; color: white; background-color: #dc3545; border-radius: 4px;">Delete</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<br />
+
+<a asp-action="Create" style="padding: 10px 15px; text-decoration: none; color: white; background-color: #28a745; border-radius: 4px;">Add New Item</a>

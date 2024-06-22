@@ -1,0 +1,34 @@
+﻿@model IEnumerable<my_resturant.Models.Menulist>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to My Restaurant</h1>
+    <p>if you want to order you have to  <a asp-controller="User" asp-action="SignIn">Login</a>.</p>
+    <p>or  <a asp-controller="User" asp-action="signUp">SignUp</a>.</p>
+
+    <br />
+
+    <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+        <thead style="background-color: #f2f2f2;">
+            <tr>
+                <th style="padding: 10px; border-bottom: 2px solid #ddd;">Name</th>
+                <th style="padding: 10px; border-bottom: 2px solid #ddd;">Price</th>
+                <th style="padding: 10px; border-bottom: 2px solid #ddd;">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr style="background-color: @((Model.ToList().IndexOf(item) % 2 == 0) ? "#f9f9f9" : "#ffffff");">
+                    <td style="padding: 10px; border-bottom: 1px solid #ddd;">@item.Name</td>
+                    <td style="padding: 10px; border-bottom: 1px solid #ddd;">@item.Price</td>
+                    <td style="padding: 10px; border-bottom: 1px solid #ddd;">@item.Description</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <br />
+</div>

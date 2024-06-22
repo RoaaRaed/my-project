@@ -1,0 +1,26 @@
+﻿@model my_resturant.Models.Menulist
+
+<h2>Create Menu Item</h2>
+
+<form asp-action="Create" method="post" style="max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ddd; border-radius: 4px; background-color: #f9f9f9;">
+    <div style="margin-bottom: 15px;">
+        <label asp-for="Name" style="display: block; font-weight: bold; margin-bottom: 5px;">@Html.DisplayNameFor(model => model.Name)</label>
+        <input asp-for="Name" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" />
+        <span asp-validation-for="Name" style="color: red;"></span>
+    </div>
+    <div style="margin-bottom: 15px;">
+        <label asp-for="Price" style="display: block; font-weight: bold; margin-bottom: 5px;">@Html.DisplayNameFor(model => model.Price)</label>
+        <input asp-for="Price" type="number" step="0.01" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" />
+        <span asp-validation-for="Price" style="color: red;"></span>
+    </div>
+    <div style="margin-bottom: 15px;">
+        <label asp-for="Description" style="display: block; font-weight: bold; margin-bottom: 5px;">@Html.DisplayNameFor(model => model.Description)</label>
+        <input asp-for="Description" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" />
+        <span asp-validation-for="Description" style="color: red;"></span>
+    </div>
+    <button type="submit" style="padding: 10px 15px; text-decoration: none; color: white; background-color: #007bff; border: none; border-radius: 4px; cursor: pointer;">Create</button>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
